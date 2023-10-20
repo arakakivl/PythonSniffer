@@ -1,10 +1,3 @@
-'''
-Coding For Security - CP 6 - Python sniffer & API for capturing raw frames.
-Guilherme Valloto, RM550353,
-Victória Ventrilho, RM94872,
-Vitor Arakaki, RM98824
-'''
-
 import socket
 import os
 from datetime import datetime
@@ -13,9 +6,7 @@ import struct
 import json
 from json import JSONEncoder
 from typing import Any
-import sys
 import requests
-sys.path.insert(1, "../common")
 from frame import *
 from packet import *
 from segment import *
@@ -33,6 +24,11 @@ def format_ip(ip_addr):
         ip += f"{str(n)}."
     
     return ip[0:len(ip) - 1]
+
+def ignore_port(port):
+    # Flask and MongoDb ports.
+    ignored_ports = [ 5000, 27017 ]
+    return port in ignored_ports
 
 '''
 A little of theory:
@@ -97,9 +93,15 @@ while True:
         
         elif protocol == 6:
             segment_obj = TcpSegment(int.from_bytes(segment[0:2], byteorder='big'), int.from_bytes(segment[2:4], byteorder='big'), int.from_bytes(segment[4:8], byteorder='big'), int.from_bytes(segment[8:12], byteorder='big'), int.from_bytes(segment[12:13], byteorder='big') & 0xF0, str(segment[int.from_bytes(segment[12:13], byteorder='big') & 0xF0:]))
+            if ignore_port(segment_obj.SourcePort) or ignore_port(segment_obj.DestinationPort):
+                continue
+
        
         elif packet_header_obj.Protocol == 17:
             segment_obj = UdpSegment(int.from_bytes(segment[0:2], byteorder='big'), int.from_bytes(segment[2:4], byteorder='big'), int.from_bytes(segment[4:6], byteorder='big'), int.from_bytes(segment[6:8], byteorder='big'), str(segment[8:]))
+            if ignore_port(segment_obj.SourcePort) or ignore_port(segment_obj.DestinationPort):
+                continue
+
         else:
             segment_obj = { }
             print("Handling unknown protocol.")

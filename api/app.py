@@ -7,11 +7,6 @@ Vitor Arakaki, RM98824
 
 from flask import Flask
 from flask import request
-import sys
-sys.path.insert(1, "../common")
-from frame import *
-from packet import *
-from segment import *
 from flask import jsonify
 import json
 from bson import json_util
@@ -32,11 +27,7 @@ app = Flask(__name__)
 # Get all PDUs endpoint.
 @app.get('/pdus')
 def get_pdus():
-    data = []
-    for x in pdu_collection.find():
-        data.append(x)
-    
-    return json.loads(json.dumps(json_util.dumps(data)))
+    return json.loads(json.dumps(json_util.dumps(pdu_collection.find())))
 
 # Create a PDU endpoint.
 @app.post('/pdus')
@@ -45,3 +36,8 @@ def post_pdus():
     pdu_collection.insert_one(json.loads(request.data))
 
     return json.loads(request.data)
+
+@app.delete('/pdus')
+def delete_pdus():
+    db.pdus.delete_many({})
+    return "OK"

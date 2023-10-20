@@ -19,8 +19,6 @@ class PacketHeader:
         else:
             self.Protocol = protocol
 
-        print(f"protocol is {self.Protocol}")
-
         self.HeaderChecksum = checksum
         self.SourceIP = src_ip
         self.DestinationIP = dest_ip

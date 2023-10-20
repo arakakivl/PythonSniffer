@@ -68,11 +68,11 @@ A API possui exatos dois endpoints, um para a criação e outro para a listagem 
  - Vitor Arakaki, RM98824
 
 ## Referências
-Sobre sockets no geral: https://docs.python.org/3/library/socket.html
-Sobre SOCK_RAW: https://stackoverflow.com/questions/30780082/sock-raw-option-in-socket-system-call, https://medium.com/nerd-for-tech/raw-sockets-with-python-sniffing-and-network-packet-injections-486043061bd5
-Sobre ethernet frames (PDU do layer 2 do OSI): https://en.wikipedia.org/wiki/EtherType
-Sobre IPv4: https://en.wikipedia.org/wiki/Internet_Protocol_version_4
-Sobre converter objetos p json: https://pynative.com/make-python-class-json-serializable/
-Sobre ICMP, TCP e UDP: https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol, https://en.wikipedia.org/wiki/Transmission_Control_Protocol, https://en.wikipedia.org/wiki/User_Datagram_Protocol
-Sobre Flask: https://flask.palletsprojects.com/en/3.0.x/quickstart/
-Sobre MongoDb: https://www.mongodb.com/languages/python, https://www.w3schools.com/python/python_mongodb_insert.asp
+ - Sobre sockets no geral: https://docs.python.org/3/library/socket.html
+ - Sobre SOCK_RAW: https://stackoverflow.com/questions/30780082/sock-raw-option-in-socket-system-call, https://medium.com/nerd-for-tech/raw-sockets-with-python-sniffing-and-network-packet-injections-486043061bd5
+ - Sobre ethernet frames (PDU do layer 2 do OSI): https://en.wikipedia.org/wiki/EtherType
+ - Sobre IPv4: https://en.wikipedia.org/wiki/Internet_Protocol_version_4
+ - Sobre converter objetos p json: https://pynative.com/make-python-class-json-serializable/
+ - Sobre ICMP, TCP e UDP: https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol, https://en.wikipedia.org/wiki/Transmission_Control_Protocol, https://en.wikipedia.org/wiki/User_Datagram_Protocol
+ - Sobre Flask: https://flask.palletsprojects.com/en/3.0.x/quickstart/
+ - Sobre MongoDb: https://www.mongodb.com/languages/python, https://www.w3schools.com/python/python_mongodb_insert.asp

@@ -16,16 +16,15 @@ Todas as dependências estão listadas a seguir, assim como no arquivo `requirem
  - `requests`
 
 #### Instalação automática de dependências
-O arquivo `requirements.txt` é um arquivo, como dito previamente, que armazena todas as dependências necessárias para que o código seja executado. Entretanto, instalar cada dependência pode não ser tão trivial, e por isso pode-se usar um utilitário para a instalação automática de todas as dependências: a `pipreqs`. Para isso, deve-se instalar tal aplicação por meio do seguinte comando:
+O arquivo `requirements.txt` é um arquivo, como dito previamente, que armazena todas as dependências necessárias para que o código seja executado. Entretanto, instalar cada dependência pode não ser tão trivial, e por isso pode-se usar um utilitário para a instalação automática de todas as dependências: o gerenciador de pacotes `pip`. Entretanto, diferentes formas de instalação do `pip` existem para diferentes sistemas operacionais, então você deve procurar um guia de instalação para o seu SO. Por exemplo, no Ubuntu, para se instalar o `pip`, pode-se fazer:
 ```shell
-# O gerenciador de pacotes pip deve estar instalado. Diferentes formas de instalação existem para diferentes sistemas operacionais, então você deve procurar um guia de instalação para o seu SO.
-pip install pipreqs
+sudo apt install python3-pip
 ```
 
-Após a instalação da utilidade, todas as dependências podem ser recuperadas por meio do seguinte comando:
+Após a instalação do gerenciador de pacotes, todas as dependências podem ser recuperadas por meio do seguinte comando:
 ```shell
 # Já estando no mesmo diretório que o arquivo requirements.txt, faça:
-pipreqs install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Conexão com o banco de dados

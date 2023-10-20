@@ -1,3 +1,10 @@
+'''
+Coding For Security - CP 6 - Python sniffer & API for capturing raw frames.
+Guilherme Valloto, RM550353,
+Victória Ventrilho, RM94872,
+Vitor Arakaki, RM98824
+'''
+
 from flask import Flask
 from flask import request
 import sys

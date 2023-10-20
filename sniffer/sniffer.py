@@ -1,3 +1,10 @@
+'''
+Coding For Security - CP 6 - Python sniffer & API for capturing raw frames.
+Guilherme Valloto, RM550353,
+Victória Ventrilho, RM94872,
+Vitor Arakaki, RM98824
+'''
+
 import socket
 import os
 from datetime import datetime

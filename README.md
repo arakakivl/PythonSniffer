@@ -57,10 +57,10 @@ sudo python3 snifffer.py
 ```
 
 ## Endpoins da API
-A API possui exatos dois endpoints, um para a criação e outro para a listagem de todos os PDUs. São eles:
+A API possui exatos três endpoints, um para a criação, outro para a listagem e mais um para a remoção de todos os PDUs. São eles:
  - POST /pdus: registra um novo dado no banco de dados.
  - GET /pdus: lista todos os dados armazenados no banco de dados.
- - DELETE /pdus: lista todos os dados armazenados no banco de dados.
+ - DELETE /pdus: delete todos os dados armazenados no banco.
 
 ## Integrantes
  - Guilherme Valloto, RM550353,

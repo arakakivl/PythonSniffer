@@ -60,6 +60,7 @@ sudo python3 snifffer.py
 A API possui exatos dois endpoints, um para a criação e outro para a listagem de todos os PDUs. São eles:
  - POST /pdus: registra um novo dado no banco de dados.
  - GET /pdus: lista todos os dados armazenados no banco de dados.
+ - DELETE /pdus: lista todos os dados armazenados no banco de dados.
 
 ## Integrantes
  - Guilherme Valloto, RM550353,

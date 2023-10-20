@@ -1,4 +1,4 @@
-# Coding For Security - Checkpoint 5, Consumo de Endpoints da Docker Engine API, Python APP Monitor & Manager
+# Coding For Security - Checkpoint 6, Python sniffer & API for capturing raw frames.
 O código representa um conjunto de duas aplicações, uma API feita com o uso da biblioteca `Flask` e uma aplicação construída a base de sockets para a interceptação de pacotes sendo enviados ou recebidos entre a máquina que está rodando a aplicação e a origem ou destino dos pacotes recebidos/enviados. Os PDUs estão sendo capturados desde o nível dois do modelo OSI, o "Data-link layer", e suas informações estão sendo armazenadas num banco de dados do tipo NoSQL, o `MongoDb`. Pelo fato dos pacotes estarem sendo recuperados de forma "pura" -- percebe-se tal fato ao se instanciar um socket do tipo `SOCK_RAW` --, isto é, sem o processamento de demais camadas, todas as suas informações são retornadas para a aplicação em forma de um array de bytes, e por isso todos os campos devem ser obtidos por meio de operações que envolvem cálculos de posição de cada campo; este fora o mecanismo usado na aplicação, um tanto quanto mais manual e talvez mais complexo, entretanto, métodos como `unpack` e `pack` da biblioteca `struct` podem ser usados.
 
 ## Detalhes e dependências
@@ -16,16 +16,15 @@ Todas as dependências estão listadas a seguir, assim como no arquivo `requirem
  - `requests`
 
 #### Instalação automática de dependências
-O arquivo `requirements.txt` é um arquivo, como dito previamente, que armazena todas as dependências necessárias para que o código seja executado. Entretanto, instalar cada dependência pode não ser tão trivial, e por isso pode-se usar um utilitário para a instalação automática de todas as dependências: a `pipreqs`. Para isso, deve-se instalar tal aplicação por meio do seguinte comando:
+O arquivo `requirements.txt` é um arquivo, como dito previamente, que armazena todas as dependências necessárias para que o código seja executado. Entretanto, instalar cada dependência pode não ser tão trivial, e por isso pode-se usar um utilitário para a instalação automática de todas as dependências: o gerenciador de pacotes `pip`. Entretanto, diferentes formas de instalação do `pip` existem para diferentes sistemas operacionais, então você deve procurar um guia de instalação para o seu SO. Por exemplo, no Ubuntu, para se instalar o `pip`, pode-se fazer:
 ```shell
-# O gerenciador de pacotes pip deve estar instalado. Diferentes formas de instalação existem para diferentes sistemas operacionais, então você deve procurar um guia de instalação para o seu SO.
-pip install pipreqs
+sudo apt install python3-pip
 ```
 
-Após a instalação da utilidade, todas as dependências podem ser recuperadas por meio do seguinte comando:
+Após a instalação do gerenciador de pacotes, todas as dependências podem ser recuperadas por meio do seguinte comando:
 ```shell
 # Já estando no mesmo diretório que o arquivo requirements.txt, faça:
-pipreqs install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Conexão com o banco de dados
@@ -61,8 +60,19 @@ sudo python3 snifffer.py
 A API possui exatos dois endpoints, um para a criação e outro para a listagem de todos os PDUs. São eles:
  - POST /pdus: registra um novo dado no banco de dados.
  - GET /pdus: lista todos os dados armazenados no banco de dados.
+ - DELETE /pdus: lista todos os dados armazenados no banco de dados.
 
 ## Integrantes
  - Guilherme Valloto, RM550353,
  - Victória Ventrilho, RM94872,
  - Vitor Arakaki, RM98824
+
+## Referências
+ - Sobre sockets no geral: https://docs.python.org/3/library/socket.html
+ - Sobre SOCK_RAW: https://stackoverflow.com/questions/30780082/sock-raw-option-in-socket-system-call, https://medium.com/nerd-for-tech/raw-sockets-with-python-sniffing-and-network-packet-injections-486043061bd5
+ - Sobre ethernet frames (PDU do layer 2 do OSI): https://en.wikipedia.org/wiki/EtherType
+ - Sobre IPv4: https://en.wikipedia.org/wiki/Internet_Protocol_version_4
+ - Sobre converter objetos p json: https://pynative.com/make-python-class-json-serializable/
+ - Sobre ICMP, TCP e UDP: https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol, https://en.wikipedia.org/wiki/Transmission_Control_Protocol, https://en.wikipedia.org/wiki/User_Datagram_Protocol
+ - Sobre Flask: https://flask.palletsprojects.com/en/3.0.x/quickstart/
+ - Sobre MongoDb: https://www.mongodb.com/languages/python, https://www.w3schools.com/python/python_mongodb_insert.asp

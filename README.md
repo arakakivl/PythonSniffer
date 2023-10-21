@@ -53,7 +53,7 @@ flask run
 
 # Executando o sniffer
 cd sniffer
-sudo python3 snifffer.py
+sudo python3 sniffer.py
 ```
 
 ## Endpoins da API
